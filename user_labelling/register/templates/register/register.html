@@ -6,8 +6,8 @@
 {% block content %}
     <form method="POST" class="form-group">
 	{% csrf_token %}
-	{% comment %} {{ form|crispy }} {% endcomment %}
-	{{ form }}
+	{{ form|crispy }}
+	{% comment %} {{ form }} {% endcomment %}
 	<button type="submit" class="btn btn-success">Register</button>
     </form>
 {% endblock %}
