@@ -1,0 +1,11 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+View
+{% endblock %}
+
+{% block content %}
+    {% for l in user.label.all %}
+	<p><a href="/{{l.id}}">{{l.name}}</a></p>
+    {% endfor %}
+{% endblock %}

@@ -8,26 +8,28 @@ from .forms import CreateNewLabel
 def index(response, id):
     ls = Label.objects.get(id=id)
  
-    if response.method == "POST":
-        if response.POST.get("save"):
-            for item in ls.item_set.all():
-                if response.POST.get("c" + str(item.id)) == "clicked":
-                    item.complete = True
-                else:
-                    item.complete = False
+    if ls in response.user.label.all():
+        if response.method == "POST":
+            if response.POST.get("save"):
+                for item in ls.item_set.all():
+                    if response.POST.get("c" + str(item.id)) == "clicked":
+                        item.complete = True
+                    else:
+                        item.complete = False
+            
+                    item.save()
         
-                item.save()
-    
-        elif response.POST.get("newItem"):
-            txt = response.POST.get("new")
-    
-            if len(txt) > 2:
-                ls.item_set.create(text=txt, complete=False)
-            else:
-                print("invalid")
+            elif response.POST.get("newItem"):
+                txt = response.POST.get("new")
+        
+                if len(txt) > 2:
+                    ls.item_set.create(text=txt, complete=False)
+                else:
+                    print("invalid")
  
  
-    return render(response, "main/label.html", {"ls":ls})
+        return render(response, "main/label.html", {"ls":ls})
+    return render(response, "main/home.html", {})
 
 def home(response):
 	return render(response, "main/home.html", {})
@@ -40,6 +42,7 @@ def create(response):
             n = form.cleaned_data["name"]
             t = Label(name=n)
             t.save()
+            response.user.label.add(t)
 
         return HttpResponseRedirect("/%i" %t.id)
 
@@ -47,3 +50,6 @@ def create(response):
         form = CreateNewLabel()
 
     return render(response, "main/create.html", {"form":form})
+
+def view(response):
+    return render(response, "main/view.html", {})
