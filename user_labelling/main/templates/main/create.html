@@ -1,7 +1,9 @@
 {% extends 'main/base.html' %}
 {% block title %} Create New Label {% endblock %}
+
 {% block content %}
-     <h3>Create Page</h3>
+{% if user.is_authenticated %}
+     <h3>Create New Label</h3>
      <form method="post" action="/create/" class="form-group">
          {% csrf_token %}
          <div class="input-group mb-3">
@@ -10,4 +12,7 @@
              </div>{{form.name}}
          </div>
     </form>
+{% else %}
+    <h2>You are not logged in. Please <a href="/login">log in</a> or <a href="/register">register</a> </h2>
+{% endif %}
 {% endblock %}

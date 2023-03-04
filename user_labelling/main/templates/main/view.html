@@ -5,7 +5,12 @@ View
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    <h1>{{user.username}}'s all labels:</h1>
     {% for l in user.label.all %}
-	<p><a href="/{{l.id}}">{{l.name}}</a></p>
+	<h2>{{l.name}}</h2>
     {% endfor %}
+{% else %}
+    <h2> You are not logged in. Please <a href="/login">log in</a> or <a href="/register">register</a> </h2>
+{% endif %}
 {% endblock %}

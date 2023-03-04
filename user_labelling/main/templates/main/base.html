@@ -5,7 +5,7 @@
 	<style type="text/css">
 		.sidenav {
 			height:100%;
-			width:160px;
+			width:200px;
 			position: fixed;
 			z-index:1;
 			top:0;
@@ -15,7 +15,7 @@
 			padding-top:20px;
 		}    
 
-                .sidenav a {
+        .sidenav a {
 			padding:6px 8px 6px 16px;
 			text-decoration: none;
 			font-size:25px;
@@ -23,12 +23,12 @@
 			display:block;
 		}  
   
-                .sidenav a:hover{
+        .sidenav a:hover{
 			color:#f1f1f1;
 		}     
 
-                .main{
-			margin-left:160px;
+        .main{
+			margin-left:50px;
 			padding: 0px 10px;
 		}   
     </style>
@@ -38,7 +38,7 @@
  
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
  
-	<title>{% block title %}Tim's Site{% endblock %}</title>
+	<title>{% block title %}Simple User Labelling Demo{% endblock %}</title>
 </head>
  
 <body>
@@ -51,7 +51,7 @@
 	<div id="content" name="content" class="main">
 		<div class="row justify-content-center">
 			<div class="col-8">
-				<h1 class="mt-2">My Site</h1>
+				<h1 class="mt-2">Simple User Labelling Demo</h1>
 				<hr class="mt-0 mb-4">
 				{% block content %}
 				{% endblock %}
